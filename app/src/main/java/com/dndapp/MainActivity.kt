@@ -1,4 +1,4 @@
-package com.example.dndapp
+package com.dndapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
