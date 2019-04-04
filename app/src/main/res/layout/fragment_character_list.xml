@@ -6,6 +6,7 @@
     tools:context=".fragment.CharacterListFragment">
 
     <TextView
+        android:id="@+id/test_text_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_list_fragment" />
