@@ -22,5 +22,11 @@
         android:id="@+id/characterCreateFragment"
         android:name="com.dndapp.fragment.CharacterCreateFragment"
         android:label="fragment_character_create"
-        tools:layout="@layout/fragment_character_create" />
+        tools:layout="@layout/fragment_character_create" >
+        <action
+            android:id="@+id/character_created"
+            app:destination="@id/characterListFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
 </navigation>

@@ -3,4 +3,8 @@
 
     <string name="hello_list_fragment">Hello list fragment</string>
     <string name="hello_create_fragment">Hello create fragment</string>
+    <string name="name">Name</string>
+    <string name="create_your_character">Create your character</string>
+    <string name="create">Create</string>
+    <string name="error_character_create_name_required">Name is required</string>
 </resources>
