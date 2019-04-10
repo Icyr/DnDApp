@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.dndapp.R
@@ -29,6 +31,22 @@ class CharacterCreateFragment : Fragment() {
             character_class_spinner.adapter = ArrayAdapter<CharacterClass>(
                 this, android.R.layout.simple_spinner_item, CharacterClass.values()
             )
+        }
+        character_class_spinner.post {
+            character_class_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    character_strength_input.requestFocus()
+                }
+            }
+        }
+        character_level_input.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                character_class_spinner.requestFocusFromTouch()
+                character_class_spinner.performClick()
+            }
+            true
         }
         listOf(
             character_level_input,
@@ -75,5 +93,8 @@ class CharacterCreateFragment : Fragment() {
                 dndAppActivity().navController.navigate(R.id.character_created)
             }
         }
+
+        character_name_input.requestFocus()
+        dndAppActivity().showKeyboard()
     }
 }
