@@ -2,6 +2,7 @@ package com.dndapp
 
 import android.app.Application
 import androidx.room.Room
+import com.dndapp.adapter.CharacterListAdapter
 import com.dndapp.data.DndAppDatabase
 import com.dndapp.viewmodel.CharacterListViewModel
 import org.koin.android.ext.koin.androidContext
@@ -20,12 +21,12 @@ class DndApplication : Application() {
         single {
             get<DndAppDatabase>().characterDao()
         }
+        single { CharacterListAdapter(get()) }
         viewModel { CharacterListViewModel(get()) }
     }
 
     override fun onCreate() {
         super.onCreate()
-
         startKoin {
             androidLogger()
             androidContext(this@DndApplication)

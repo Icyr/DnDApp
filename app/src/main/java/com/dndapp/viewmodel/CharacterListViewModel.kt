@@ -19,4 +19,10 @@ class CharacterListViewModel(private val characterDao: CharacterDao) : ViewModel
         }
     }
 
+    fun deleteCharacter(character: Character) {
+        viewModelScope.launch(Dispatchers.IO) {
+            characterDao.delete(character)
+        }
+    }
+
 }
