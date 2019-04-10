@@ -8,10 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.*
 import com.dndapp.R
-import com.dndapp.activity.DndAppActivity
 import com.dndapp.adapter.CharacterDiffUtilCallback
 import com.dndapp.adapter.CharacterHolder
 import com.dndapp.adapter.CharacterListAdapter
+import com.dndapp.dndAppActivity
 import com.dndapp.viewmodel.CharacterListViewModel
 import kotlinx.android.synthetic.main.fragment_character_list.*
 import org.koin.android.ext.android.inject
@@ -22,10 +22,7 @@ class CharacterListFragment : Fragment() {
     private val characterListViewModel: CharacterListViewModel by viewModel()
     private val characterListAdapter: CharacterListAdapter by inject()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_character_list, container, false)
     }
 
@@ -56,7 +53,7 @@ class CharacterListFragment : Fragment() {
         }
         ItemTouchHelper(callback).attachToRecyclerView(character_list)
         button_create_character.setOnClickListener {
-            (activity as DndAppActivity).navController.navigate(R.id.create_character)
+            dndAppActivity().navController.navigate(R.id.create_character)
         }
     }
 

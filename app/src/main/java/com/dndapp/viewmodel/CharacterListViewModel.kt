@@ -3,8 +3,8 @@ package com.dndapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dndapp.data.entity.Character
 import com.dndapp.data.CharacterDao
+import com.dndapp.data.entity.Character
 import com.dndapp.data.entity.CharacterClass
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -14,9 +14,20 @@ class CharacterListViewModel(private val characterDao: CharacterDao) : ViewModel
     val characters: LiveData<List<Character>>
         get() = characterDao.getCharacters()
 
-    fun createCharacter(name: String, characterClass: CharacterClass, level: Int) {
+    fun createCharacter(
+        name: String, characterClass: CharacterClass, level: Int,
+        strength: Int, dexterity: Int, constitution: Int,
+        intelligence: Int, wisdom: Int, charisma: Int
+    ) {
         viewModelScope.launch(Dispatchers.IO) {
-            characterDao.insert(Character(0, name, characterClass, level))
+            characterDao.insert(
+                Character(
+                    0,
+                    name, characterClass, level,
+                    strength, dexterity, constitution,
+                    intelligence, wisdom, charisma
+                )
+            )
         }
     }
 
