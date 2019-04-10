@@ -25,11 +25,29 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Spinner
+        android:id="@+id/character_class_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/character_level_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/level"
+            android:importantForAutofill="no"
+            android:inputType="number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/character_create_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/create"
-        android:layout_marginTop="@dimen/default_margin"/>
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/create" />
 
 </LinearLayout>

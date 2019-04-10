@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dndapp.R
-import com.dndapp.data.Character
+import com.dndapp.data.entity.Character
 import com.dndapp.databinding.CharacterListItemBinding
 import com.dndapp.viewmodel.CharacterListViewModel
 

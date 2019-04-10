@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">DnDApp</string>
 
-    <string name="hello_list_fragment">Hello list fragment</string>
-    <string name="hello_create_fragment">Hello create fragment</string>
     <string name="name">Name</string>
+    <string name="level">Level</string>
     <string name="create_your_character">Create your character</string>
     <string name="create">Create</string>
+    <string name="level_number">Level: %1$d</string>
+
     <string name="error_character_create_name_required">Name is required</string>
+    <string name="error_character_create_level_required">Level is required</string>
 </resources>
