@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".fragment.CharacterListFragment">
 
-    <TextView
-        android:id="@+id/test_text_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/character_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_list_fragment" />
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_create_character"
