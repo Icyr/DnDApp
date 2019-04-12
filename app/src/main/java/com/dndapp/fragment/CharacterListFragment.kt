@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.*
@@ -28,10 +29,10 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val manager = LinearLayoutManager(context)
-        manager.orientation = LinearLayoutManager.VERTICAL
         character_list.apply {
-            layoutManager = manager
+            layoutManager = LinearLayoutManager(context).apply {
+                orientation = LinearLayoutManager.VERTICAL
+            }
             adapter = characterListAdapter
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             itemAnimator = DefaultItemAnimator()
@@ -54,6 +55,9 @@ class CharacterListFragment : Fragment() {
         ItemTouchHelper(callback).attachToRecyclerView(character_list)
         button_create_character.setOnClickListener {
             dndAppActivity().navController.navigate(R.id.create_character)
+        }
+        characterListAdapter.onClickHandler = {
+            dndAppActivity().navController.navigate(R.id.view_character, bundleOf("id" to it.id))
         }
     }
 

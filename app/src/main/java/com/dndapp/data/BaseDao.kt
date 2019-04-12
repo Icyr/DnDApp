@@ -5,8 +5,8 @@ import androidx.room.Insert
 
 interface BaseDao<T> {
     @Insert
-    fun insert(vararg entity: T)
+    fun insert(entity: T): Long
 
     @Delete
-    fun delete(vararg entity: T)
+    fun delete(entity: T)
 }

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.viewModelScope
 import com.dndapp.R
 import com.dndapp.data.entity.CharacterClass
 import com.dndapp.dndAppActivity
@@ -15,6 +17,7 @@ import com.dndapp.toInt
 import com.dndapp.view.InputFilterMinMax
 import com.dndapp.viewmodel.CharacterListViewModel
 import kotlinx.android.synthetic.main.fragment_character_create.*
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharacterCreateFragment : Fragment() {
@@ -78,19 +81,21 @@ class CharacterCreateFragment : Fragment() {
                 }
             }
             if (!hasError) {
-                characterListViewModel.createCharacter(
-                    character_name_input.text.toString(),
-                    character_class_spinner.selectedItem as CharacterClass,
-                    character_level_input.text.toInt(),
-                    character_strength_input.text.toInt(),
-                    character_dexterity_input.text.toInt(),
-                    character_constitution_input.text.toInt(),
-                    character_intelligence_input.text.toInt(),
-                    character_wisdom_input.text.toInt(),
-                    character_charisma_input.text.toInt()
-                )
-                dndAppActivity().hideKeyboard()
-                dndAppActivity().navController.navigate(R.id.character_created)
+                characterListViewModel.viewModelScope.launch {
+                    val id = characterListViewModel.createCharacter(
+                        character_name_input.text.toString(),
+                        character_class_spinner.selectedItem as CharacterClass,
+                        character_level_input.text.toInt(),
+                        character_strength_input.text.toInt(),
+                        character_dexterity_input.text.toInt(),
+                        character_constitution_input.text.toInt(),
+                        character_intelligence_input.text.toInt(),
+                        character_wisdom_input.text.toInt(),
+                        character_charisma_input.text.toInt()
+                    )
+                    dndAppActivity().hideKeyboard()
+                    dndAppActivity().navController.navigate(R.id.character_created, bundleOf("id" to id))
+                }
             }
         }
 

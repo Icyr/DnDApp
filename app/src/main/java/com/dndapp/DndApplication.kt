@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.dndapp.adapter.CharacterListAdapter
 import com.dndapp.data.DndAppDatabase
 import com.dndapp.viewmodel.CharacterListViewModel
+import com.dndapp.viewmodel.CharacterViewViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -23,6 +24,7 @@ class DndApplication : Application() {
         }
         single { CharacterListAdapter(get()) }
         viewModel { CharacterListViewModel(get()) }
+        viewModel { CharacterViewViewModel(get()) }
     }
 
     override fun onCreate() {

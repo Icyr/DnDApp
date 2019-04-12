@@ -8,27 +8,26 @@ import com.dndapp.data.entity.Character
 import com.dndapp.data.entity.CharacterClass
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class CharacterListViewModel(private val characterDao: CharacterDao) : ViewModel() {
 
     val characters: LiveData<List<Character>>
         get() = characterDao.getCharacters()
 
-    fun createCharacter(
+    suspend fun createCharacter(
         name: String, characterClass: CharacterClass, level: Int,
         strength: Int, dexterity: Int, constitution: Int,
         intelligence: Int, wisdom: Int, charisma: Int
-    ) {
-        viewModelScope.launch(Dispatchers.IO) {
-            characterDao.insert(
-                Character(
-                    0,
-                    name, characterClass, level,
-                    strength, dexterity, constitution,
-                    intelligence, wisdom, charisma
-                )
+    ): Long = withContext(Dispatchers.IO) {
+        characterDao.insert(
+            Character(
+                0,
+                name, characterClass, level,
+                strength, dexterity, constitution,
+                intelligence, wisdom, charisma
             )
-        }
+        )
     }
 
     fun deleteCharacter(character: Character) {

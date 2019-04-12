@@ -3,30 +3,45 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/characterListFragment">
+    app:startDestination="@id/character_list_fragment">
 
     <fragment
-        android:id="@+id/characterListFragment"
+        android:id="@+id/character_list_fragment"
         android:name="com.dndapp.fragment.CharacterListFragment"
         android:label="CharacterListFragment"
         tools:layout="@layout/fragment_character_list" >
         <action
             android:id="@+id/create_character"
-            app:destination="@id/characterCreateFragment"
+            app:destination="@id/character_create_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/view_character"
+            app:destination="@id/character_view_fragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
-        android:id="@+id/characterCreateFragment"
+        android:id="@+id/character_create_fragment"
         android:name="com.dndapp.fragment.CharacterCreateFragment"
         android:label="fragment_character_create"
         tools:layout="@layout/fragment_character_create" >
         <action
             android:id="@+id/character_created"
-            app:destination="@id/characterListFragment"
+            app:destination="@id/character_view_fragment"
             app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/character_list_fragment"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+    <fragment
+        android:id="@+id/character_view_fragment"
+        android:name="com.dndapp.fragment.CharacterViewFragment"
+        android:label="fragment_character_view"
+        tools:layout="@layout/fragment_character_view" />
 </navigation>

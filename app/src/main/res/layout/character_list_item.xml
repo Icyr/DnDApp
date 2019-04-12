@@ -5,19 +5,23 @@
         <variable
             name="character"
             type="com.dndapp.data.entity.Character" />
+        <variable
+            name="handlers"
+            type="com.dndapp.adapter.CharacterListItemHandlers" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/default_margin">
+        android:padding="@dimen/default_margin"
+        android:onClick="@{() -> handlers.onClickHandler.invoke(character)}">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/subheader_text_size"
-            android:text="@{character.name}"/>
+            android:text="@{character.name}"
+            android:textSize="@dimen/subheader_text_size" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,17 +31,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{character.characterClass.name}"/>
+                android:text="@{character.characterClass.name}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/level_number(character.level)}"
                 android:layout_marginStart="@dimen/default_margin"
-                android:layout_marginLeft="@dimen/default_margin"/>
-
+                android:layout_marginLeft="@dimen/default_margin"
+                android:text="@{@string/level_number(character.level)}" />
         </LinearLayout>
-
-
     </LinearLayout>
 </layout>
