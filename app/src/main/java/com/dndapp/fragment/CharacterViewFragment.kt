@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.viewModelScope
 import com.dndapp.R
 import com.dndapp.databinding.FragmentCharacterViewBinding
+import com.dndapp.dndAppActivity
 import com.dndapp.viewmodel.CharacterViewViewModel
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,6 +32,7 @@ class CharacterViewFragment : Fragment() {
             val id = getLong("id")
             characterViewViewModel.viewModelScope.launch {
                 val dbCharacter = characterViewViewModel.getCharacter(id)
+                dndAppActivity().title = dbCharacter.name
                 characterBinding.character = dbCharacter
                 characterBinding.executePendingBindings()
             }

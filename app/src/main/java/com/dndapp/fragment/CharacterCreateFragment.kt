@@ -30,6 +30,7 @@ class CharacterCreateFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dndAppActivity().setTitle(R.string.new_character)
         context?.run {
             character_class_spinner.adapter = ArrayAdapter<CharacterClass>(
                 this, android.R.layout.simple_spinner_item, CharacterClass.values()

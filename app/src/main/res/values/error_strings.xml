@@ -1,0 +1,11 @@
+<resources>
+    <string name="error_character_create_name_required">Name is required</string>
+    <string name="error_character_create_level_required">Level is required</string>
+    <string name="error_character_create_strength_required">Strength is required</string>
+    <string name="error_character_create_dexterity_required">Dexterity is required</string>
+    <string name="error_character_create_constitution_required">Constitution is required</string>
+    <string name="error_character_create_intelligence_required">Intelligence is required</string>
+    <string name="error_character_create_wisdom_required">Wisdom is required</string>
+    <string name="error_character_create_charisma_required">Charisma is required</string>
+    <string name="error_character_create_field_required">This field is required</string>
+</resources>
