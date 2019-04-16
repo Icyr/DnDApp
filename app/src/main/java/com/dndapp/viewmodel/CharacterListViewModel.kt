@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.dndapp.data.CharacterDao
 import com.dndapp.data.entity.Character
 import com.dndapp.data.entity.CharacterClass
+import com.dndapp.data.entity.Characteristics
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -22,10 +23,11 @@ class CharacterListViewModel(private val characterDao: CharacterDao) : ViewModel
     ): Long = withContext(Dispatchers.IO) {
         characterDao.insert(
             Character(
-                0,
-                name, characterClass, level,
-                strength, dexterity, constitution,
-                intelligence, wisdom, charisma
+                0, name, characterClass, level,
+                Characteristics(
+                    strength, dexterity, constitution,
+                    intelligence, wisdom, charisma
+                )
             )
         )
     }

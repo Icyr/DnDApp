@@ -1,5 +1,6 @@
 package com.dndapp.data.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,6 +10,10 @@ data class Character(
     val name: String,
     val characterClass: CharacterClass,
     val level: Int,
+    @Embedded(prefix = "characteristic") val characteristics: Characteristics
+)
+
+data class Characteristics(
     val strength: Int,
     val dexterity: Int,
     val constitution: Int,

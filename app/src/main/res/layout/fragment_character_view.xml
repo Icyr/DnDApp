@@ -8,14 +8,53 @@
             type="com.dndapp.data.entity.Character" />
     </data>
 
-    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         tools:context=".fragment.CharacterViewFragment">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{character.name}" />
-    </FrameLayout>
+            android:orientation="horizontal">
+
+            <com.dndapp.view.CharacteristicView
+                style="@style/DndAppCharacteristicView"
+                app:label="@string/strength"
+                app:value="@{character.characteristics.strength}" />
+
+            <com.dndapp.view.CharacteristicView
+                style="@style/DndAppCharacteristicView"
+                app:label="@string/dexterity"
+                app:value="@{character.characteristics.dexterity}" />
+
+            <com.dndapp.view.CharacteristicView
+                style="@style/DndAppCharacteristicView"
+                app:label="@string/constitution"
+                app:value="@{character.characteristics.constitution}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.dndapp.view.CharacteristicView
+                style="@style/DndAppCharacteristicView"
+                app:label="@string/intelligence"
+                app:value="@{character.characteristics.intelligence}" />
+
+            <com.dndapp.view.CharacteristicView
+                style="@style/DndAppCharacteristicView"
+                app:label="@string/wisdom"
+                app:value="@{character.characteristics.wisdom}" />
+
+            <com.dndapp.view.CharacteristicView
+                style="@style/DndAppCharacteristicView"
+                app:label="@string/charisma"
+                app:value="@{character.characteristics.charisma}" />
+        </LinearLayout>
+    </LinearLayout>
 </layout>
