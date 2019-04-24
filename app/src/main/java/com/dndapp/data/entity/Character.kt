@@ -20,24 +20,35 @@ data class Characteristics(
     val intelligence: Int,
     val wisdom: Int,
     val charisma: Int
-)
+) {
+    fun getValue(characteristic: Characteristic): Int = when (characteristic) {
+        Characteristic.STRENGTH -> strength
+        Characteristic.DEXTERITY -> dexterity
+        Characteristic.CONSTITUTION -> constitution
+        Characteristic.INTELLIGENCE -> intelligence
+        Characteristic.WISDOM -> wisdom
+        Characteristic.CHARISMA -> charisma
+    }
 
-fun getBonus(value: Int): Int = when (value) {
-    0, 1 -> -5
-    2, 3 -> -4
-    4, 5 -> -3
-    6, 7 -> -2
-    8, 9 -> -1
-    10, 11 -> 0
-    12, 13 -> 1
-    14, 15 -> 2
-    16, 17 -> 3
-    18, 19 -> 4
-    20, 21 -> 5
-    22, 23 -> 6
-    24, 25 -> 7
-    26, 27 -> 8
-    28, 29 -> 9
-    30 -> 10
-    else -> -5
+    fun getStringValue(characteristic: Characteristic) = getValue(characteristic).toString()
+
+    fun getBonus(characteristic: Characteristic) = when (getValue(characteristic)) {
+        0, 1 -> "-5"
+        2, 3 -> "-4"
+        4, 5 -> "-3"
+        6, 7 -> "-2"
+        8, 9 -> "-1"
+        10, 11 -> "+0"
+        12, 13 -> "+1"
+        14, 15 -> "+2"
+        16, 17 -> "+3"
+        18, 19 -> "+4"
+        20, 21 -> "+5"
+        22, 23 -> "+6"
+        24, 25 -> "+7"
+        26, 27 -> "+8"
+        28, 29 -> "+9"
+        30 -> "+10"
+        else -> "-5"
+    }
 }

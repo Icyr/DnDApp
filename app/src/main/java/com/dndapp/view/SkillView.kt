@@ -12,13 +12,11 @@ class SkillView(context: Context, attrs: AttributeSet) : LinearLayout(context, a
 
     private val label: String
     private val proficient: Boolean
-    private val value: Int
 
     init {
         context.obtainStyledAttributes(attrs, R.styleable.SkillView).apply {
             label = getString(R.styleable.SkillView_label).orEmpty()
             proficient = getBoolean(R.styleable.SkillView_proficient, false)
-            value = getInt(R.styleable.SkillView_value, 0)
             recycle()
         }
     }
@@ -29,7 +27,12 @@ class SkillView(context: Context, attrs: AttributeSet) : LinearLayout(context, a
             LayoutInflater.from(context).inflate(R.layout.view_skill, this, false)
         )
         skill_icon.visibility = if (proficient) View.VISIBLE else View.INVISIBLE
-        val valueString = if (value >= 0) "+$value" else value.toString()
-        skill_label.text = context.getString(R.string.skill_number, label, valueString)
+        skill_label.text = label
+    }
+
+    fun setValue(value: String?) {
+        value?.apply {
+            skill_bonus.text = value
+        }
     }
 }

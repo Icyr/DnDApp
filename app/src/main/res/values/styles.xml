@@ -35,6 +35,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textAppearance">@style/Text</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
     <style name="DndAppCharacteristicValue" parent="DndAppCharacteristicLabel">

@@ -4,30 +4,31 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.dndapp.R
-import kotlinx.android.synthetic.main.view_characteristic.view.*
+import android.widget.TextView
+import androidx.databinding.BindingAdapter
+import com.dndapp.data.entity.Character
+import com.dndapp.data.entity.Characteristic
+import com.dndapp.databinding.ViewCharacteristicBinding
 
 class CharacteristicView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
-    private val label: String
+    private val binding: ViewCharacteristicBinding =
+        ViewCharacteristicBinding.inflate(LayoutInflater.from(context), this, true)
 
-    init {
-        context.obtainStyledAttributes(attrs, R.styleable.CharacteristicView).apply {
-            label = getString(R.styleable.CharacteristicView_label).orEmpty()
-            recycle()
-        }
+    fun setCharacter(value: Character?) {
+        binding.character = value
+        binding.executePendingBindings()
     }
 
-    override fun onFinishInflate() {
-        super.onFinishInflate()
-        addView(
-            LayoutInflater.from(context).inflate(R.layout.view_characteristic, this, false)
-        )
-        characteristic_label.text = label
+    fun setCharacteristic(value: Characteristic?) {
+        binding.characteristic = value
+        binding.executePendingBindings()
     }
+}
 
-    fun setValue(value: Int) {
-        characteristic_value.text = value.toString()
+@BindingAdapter("app:characteristicText")
+fun TextView.characteristicText(characteristic: Characteristic?) {
+    characteristic?.apply {
+        text = context.getString(resourceId)
     }
-
 }

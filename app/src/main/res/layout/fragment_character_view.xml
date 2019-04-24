@@ -3,6 +3,8 @@
 
     <data>
 
+        <import type="com.dndapp.data.entity.Characteristic" />
+
         <variable
             name="character"
             type="com.dndapp.data.entity.Character" />
@@ -17,8 +19,8 @@
 
         <com.dndapp.view.CharacteristicView
             style="@style/DndAppCharacteristicView"
-            app:label="@string/strength"
-            app:value="@{character.characteristics.strength}" />
+            app:character="@{character}"
+            app:characteristic="@{Characteristic.STRENGTH}" />
 
         <View
             android:layout_width="match_parent"
@@ -27,8 +29,8 @@
 
         <com.dndapp.view.CharacteristicView
             style="@style/DndAppCharacteristicView"
-            app:label="@string/dexterity"
-            app:value="@{character.characteristics.dexterity}" />
+            app:character="@{character}"
+            app:characteristic="@{Characteristic.DEXTERITY}" />
 
         <View
             android:layout_width="match_parent"
@@ -37,8 +39,8 @@
 
         <com.dndapp.view.CharacteristicView
             style="@style/DndAppCharacteristicView"
-            app:label="@string/constitution"
-            app:value="@{character.characteristics.constitution}" />
+            app:character="@{character}"
+            app:characteristic="@{Characteristic.CONSTITUTION}" />
 
         <View
             android:layout_width="match_parent"
@@ -47,8 +49,8 @@
 
         <com.dndapp.view.CharacteristicView
             style="@style/DndAppCharacteristicView"
-            app:label="@string/intelligence"
-            app:value="@{character.characteristics.intelligence}" />
+            app:character="@{character}"
+            app:characteristic="@{Characteristic.INTELLIGENCE}" />
 
         <View
             android:layout_width="match_parent"
@@ -57,8 +59,8 @@
 
         <com.dndapp.view.CharacteristicView
             style="@style/DndAppCharacteristicView"
-            app:label="@string/wisdom"
-            app:value="@{character.characteristics.wisdom}" />
+            app:character="@{character}"
+            app:characteristic="@{Characteristic.WISDOM}" />
 
         <View
             android:layout_width="match_parent"
@@ -67,8 +69,8 @@
 
         <com.dndapp.view.CharacteristicView
             style="@style/DndAppCharacteristicView"
-            app:label="@string/charisma"
-            app:value="@{character.characteristics.charisma}" />
+            app:character="@{character}"
+            app:characteristic="@{Characteristic.CHARISMA}" />
 
     </LinearLayout>
 </layout>

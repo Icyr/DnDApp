@@ -7,17 +7,25 @@
 
     <ImageView
         android:id="@+id/skill_icon"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:src="@drawable/ic_star_primary_24dp"
         android:visibility="invisible"
         tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/skill_label"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/quarter_margin"
         android:layout_marginStart="@dimen/quarter_margin"
+        android:layout_marginLeft="@dimen/quarter_margin"
+        android:layout_weight="5"
         android:textAppearance="@style/Text" />
+
+    <TextView
+        android:id="@+id/skill_bonus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="5" />
 </LinearLayout>
