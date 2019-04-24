@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="label" format="string" />
+    <attr name="value" format="integer" />
+
     <declare-styleable name="CharacteristicView">
-        <attr name="label" format="string" />
-        <attr name="value" format="integer" />
+        <attr name="label" />
+        <attr name="value" />
+    </declare-styleable>
+
+    <declare-styleable name="SkillView">
+        <attr name="label" />
+        <attr name="proficient" format="boolean" />
+        <attr name="value" />
     </declare-styleable>
 </resources>

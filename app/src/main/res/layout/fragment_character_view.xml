@@ -15,46 +15,60 @@
         android:orientation="vertical"
         tools:context=".fragment.CharacterViewFragment">
 
-        <LinearLayout
+        <com.dndapp.view.CharacteristicView
+            style="@style/DndAppCharacteristicView"
+            app:label="@string/strength"
+            app:value="@{character.characteristics.strength}" />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
 
-            <com.dndapp.view.CharacteristicView
-                style="@style/DndAppCharacteristicView"
-                app:label="@string/strength"
-                app:value="@{character.characteristics.strength}" />
+        <com.dndapp.view.CharacteristicView
+            style="@style/DndAppCharacteristicView"
+            app:label="@string/dexterity"
+            app:value="@{character.characteristics.dexterity}" />
 
-            <com.dndapp.view.CharacteristicView
-                style="@style/DndAppCharacteristicView"
-                app:label="@string/dexterity"
-                app:value="@{character.characteristics.dexterity}" />
-
-            <com.dndapp.view.CharacteristicView
-                style="@style/DndAppCharacteristicView"
-                app:label="@string/constitution"
-                app:value="@{character.characteristics.constitution}" />
-        </LinearLayout>
-
-        <LinearLayout
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
 
-            <com.dndapp.view.CharacteristicView
-                style="@style/DndAppCharacteristicView"
-                app:label="@string/intelligence"
-                app:value="@{character.characteristics.intelligence}" />
+        <com.dndapp.view.CharacteristicView
+            style="@style/DndAppCharacteristicView"
+            app:label="@string/constitution"
+            app:value="@{character.characteristics.constitution}" />
 
-            <com.dndapp.view.CharacteristicView
-                style="@style/DndAppCharacteristicView"
-                app:label="@string/wisdom"
-                app:value="@{character.characteristics.wisdom}" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
 
-            <com.dndapp.view.CharacteristicView
-                style="@style/DndAppCharacteristicView"
-                app:label="@string/charisma"
-                app:value="@{character.characteristics.charisma}" />
-        </LinearLayout>
+        <com.dndapp.view.CharacteristicView
+            style="@style/DndAppCharacteristicView"
+            app:label="@string/intelligence"
+            app:value="@{character.characteristics.intelligence}" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <com.dndapp.view.CharacteristicView
+            style="@style/DndAppCharacteristicView"
+            app:label="@string/wisdom"
+            app:value="@{character.characteristics.wisdom}" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black" />
+
+        <com.dndapp.view.CharacteristicView
+            style="@style/DndAppCharacteristicView"
+            app:label="@string/charisma"
+            app:value="@{character.characteristics.charisma}" />
+
     </LinearLayout>
 </layout>

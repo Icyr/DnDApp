@@ -14,4 +14,7 @@
     <string name="wisdom">Wisdom</string>
     <string name="charisma">Charisma</string>
     <string name="level_number">Level: %1$d</string>
+    <string name="skill_number">%1$s %2$s</string>
+    <string name="skill_general">General</string>
+    <string name="skill_save">Save</string>
 </resources>

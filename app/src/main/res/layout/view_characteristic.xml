@@ -1,19 +1,46 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_marginTop="@dimen/half_margin"
+    android:layout_marginBottom="@dimen/half_margin"
+    android:baselineAligned="false"
+    android:orientation="horizontal"
     tools:context=".view.CharacteristicView">
 
-    <TextView
-        android:id="@+id/characteristic_label"
-        style="@style/DndAppCharacteristicLabel" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/characteristic_value"
-        style="@style/DndAppCharacteristicValue" />
+        <TextView
+            android:id="@+id/characteristic_label"
+            style="@style/DndAppCharacteristicLabel" />
 
-    <TextView
-        android:id="@+id/characteristic_bonus"
-        style="@style/DndAppCharacteristicLabel" />
+        <TextView
+            android:id="@+id/characteristic_value"
+            style="@style/DndAppCharacteristicValue" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <com.dndapp.view.SkillView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:label="@string/skill_general"
+            app:value="3" />
+
+        <com.dndapp.view.SkillView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:label="@string/skill_save"
+            app:proficient="true"
+            app:value="5" />
+    </LinearLayout>
 </LinearLayout>
