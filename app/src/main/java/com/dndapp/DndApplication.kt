@@ -1,7 +1,10 @@
 package com.dndapp
 
 import android.app.Application
-import com.dndapp.login.LoginViewModel
+import com.dndapp.character.create.CharacterCreateViewModel
+import com.dndapp.character.list.CharacterListViewModel
+import com.dndapp.model.character.CharacterRepository
+import com.dndapp.viewmodel.NavigationViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -17,7 +20,13 @@ class DndApplication : Application() {
             androidContext(this@DndApplication)
             modules(
                 module {
-                    viewModel { LoginViewModel() }
+                    // repository
+                    single { CharacterRepository() }
+                    // view model
+                    single { NavigationViewModel() }
+                    // android view model
+                    viewModel { CharacterListViewModel(get(), get()) }
+                    viewModel { CharacterCreateViewModel(get(), get()) }
                 }
             )
         }
