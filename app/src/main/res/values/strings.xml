@@ -1,19 +1,5 @@
 <resources>
     <string name="app_name">DnDApp</string>
 
-    <string name="characters">Characters</string>
-    <string name="new_character">New Character</string>
-    <string name="name">Name</string>
-    <string name="characterClass">Class</string>
-    <string name="level">Level</string>
-    <string name="characteristics">Characteristics</string>
-    <string name="strength">Strength</string>
-    <string name="dexterity">Dexterity</string>
-    <string name="constitution">Constitution</string>
-    <string name="intelligence">Intelligence</string>
-    <string name="wisdom">Wisdom</string>
-    <string name="charisma">Charisma</string>
-    <string name="level_number">Level: %1$d</string>
-    <string name="skill_general">General</string>
-    <string name="skill_save">Save</string>
+    <string name="login_username">Username</string>
 </resources>

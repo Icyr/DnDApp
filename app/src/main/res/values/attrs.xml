@@ -1,13 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <declare-styleable name="CharacteristicView">
-        <attr name="character" format="reference" />
-        <attr name="characteristic" format="reference" />
-    </declare-styleable>
-
-    <declare-styleable name="SkillView">
-        <attr name="label" format="string" />
-        <attr name="proficient" format="boolean" />
-        <attr name="value" format="string" />
-    </declare-styleable>
-</resources>
+<resources></resources>
