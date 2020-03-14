@@ -1,13 +1,15 @@
 package com.dndapp.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.dndapp.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_email_password.*
 
 
@@ -21,7 +23,6 @@ class EmailPasswordActivity : AppCompatActivity(),  View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_email_password)
-
         etEmail =  findViewById(R.id.et_email)
         etPassword =  findViewById(R.id.et_password)
 
@@ -29,94 +30,75 @@ class EmailPasswordActivity : AppCompatActivity(),  View.OnClickListener {
         emailSignInButton.setOnClickListener(this)
         emailCreateAccountButton.setOnClickListener(this)
 
-        auth = FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance()
     }
 
     override fun onStart() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
+        auth.currentUser
     }
 
-    private fun updateUI(user: FirebaseUser?) {
-        // hideProgressBar()
-        if (user != null) {
-//          //user is signed in
-      } else {
-//          //user is signed out
-        }
-    }
 
     override fun onClick(v: View) {
-        val i = v.id
-        when (i) {
+        when (v.id) {
             R.id.emailCreateAccountButton -> createAccount(et_email.text.toString(), et_password.text.toString())
             R.id.emailSignInButton -> signIn(et_email.text.toString(), et_password.text.toString())
         }
     }
 
-    private fun signOut() {
-        auth.signOut()
-        updateUI(null)
-    }
-
     private fun signIn(email: String, password: String) {
-        // [START sign_in_with_email]
+        try {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(
                 this
             ) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
-                   // updateUI(user)
+                    intent = Intent(this@EmailPasswordActivity, DndAppActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 } else {
-                    // If sign in fails, display a message to the user.
-
-                    Toast.makeText(
-                        this@EmailPasswordActivity, "Authentication failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                //    updateUI(null)
+                    handleException(this@EmailPasswordActivity, "The username or password is incorrect")
                 }
-
-                // [START_EXCLUDE]
-//                if (!task.isSuccessful) {
-//                    mStatusTextView.setText(R.string.auth_failed)
-//                }
-//                hideProgressBar()
-                // [END_EXCLUDE]
             }
-        // [END sign_in_with_email]
+        } catch (e : Exception)  {
+            handleException(this@EmailPasswordActivity, e.localizedMessage)
+        }
     }
 
-    public fun createAccount(email: String, password: String) {
-        // [START create_user_with_email]
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(
-                this
-            ) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
-                    Toast.makeText(
-                        this@EmailPasswordActivity, "Authentication successful.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                   // updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(
-                        this@EmailPasswordActivity, "Authentication failed.",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                  //  updateUI(null)
+    private fun createAccount(email: String, password: String) {
+        try {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(
+                    this
+                ) {
+                    if (it.isSuccessful) {
+                        Toast.makeText(
+                            this@EmailPasswordActivity, "createUserWithEmail:success.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        //todo navigate to create account page
+                    } else {
+                        handleException(this@EmailPasswordActivity, "The username or password is incorrect")
+                    }
                 }
+        } catch (e : Exception)  {
+            handleException(this@EmailPasswordActivity, e.localizedMessage)
+        }
+    }
 
-                // [START_EXCLUDE]
-                // [END_EXCLUDE]
+    private fun handleException(context: Context, exceptionMessage : String ){
+        val alertDialogBuilder = AlertDialog.Builder(context)
+        alertDialogBuilder.setTitle("Exception occurred")
+
+        alertDialogBuilder
+            .setMessage(exceptionMessage)
+            .setCancelable(false)
+            .setPositiveButton("OK") { _, _ ->
             }
-        // [END create_user_with_email]
+
+        val alertDialog: AlertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+
     }
 }
