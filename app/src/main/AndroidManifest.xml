@@ -18,6 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.EmailPasswordActivity"
+            android:label="@string/label_emailpassword"
+            android:windowSoftInputMode="stateAlwaysHidden" />
     </application>
 
 </manifest>
