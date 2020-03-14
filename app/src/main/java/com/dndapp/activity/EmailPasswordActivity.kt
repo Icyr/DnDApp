@@ -11,11 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dndapp.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_email_password.*
+import org.koin.android.ext.android.inject
 
 
 class EmailPasswordActivity : AppCompatActivity(),  View.OnClickListener {
 
-    private lateinit var auth: FirebaseAuth
+    private val auth by inject<FirebaseAuth>()
 
     private var etEmail: EditText? = null
     private var etPassword: EditText? = null
@@ -29,8 +30,6 @@ class EmailPasswordActivity : AppCompatActivity(),  View.OnClickListener {
         // Buttons
         emailSignInButton.setOnClickListener(this)
         emailCreateAccountButton.setOnClickListener(this)
-
-        auth = FirebaseAuth.getInstance()
     }
 
     override fun onStart() {

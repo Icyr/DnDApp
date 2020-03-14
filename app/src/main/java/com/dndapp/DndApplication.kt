@@ -5,6 +5,7 @@ import com.dndapp.character.create.CharacterCreateViewModel
 import com.dndapp.character.list.CharacterListViewModel
 import com.dndapp.model.character.CharacterRepository
 import com.dndapp.viewmodel.NavigationViewModel
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -24,6 +25,8 @@ class DndApplication : Application() {
                     single { CharacterRepository() }
                     // view model
                     single { NavigationViewModel() }
+                    // FirebaseAuth instance
+                    single { FirebaseAuth.getInstance() }
                     // android view model
                     viewModel { CharacterListViewModel(get(), get()) }
                     viewModel { CharacterCreateViewModel(get(), get()) }
