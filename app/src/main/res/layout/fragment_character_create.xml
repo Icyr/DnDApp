@@ -17,10 +17,12 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/create_name_input_layout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="@string/create_character_input_label"
             app:layout_constraintBottom_toTopOf="@id/create_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed">
 
@@ -33,7 +35,7 @@
 
         <Button
             android:id="@+id/create_submit"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/double_margin"
             android:enabled="@{viewModel.state.canSubmit}"

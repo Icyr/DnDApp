@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dndapp.landing.signup.SignUpViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/double_margin"
+        android:paddingEnd="@dimen/double_margin">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sign_up_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/sign_up_email"
+            app:layout_constraintBottom_toTopOf="@id/sign_up_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:text="@={viewModel.state.email}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sign_up_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:hint="@string/sign_up_password"
+            app:layout_constraintBottom_toTopOf="@id/sign_up_confirm_password"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_up_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:text="@={viewModel.state.password}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/sign_up_confirm_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:hint="@string/sign_up_confirm_password"
+            app:layout_constraintBottom_toTopOf="@id/sign_up_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_up_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:text="@={viewModel.state.confirmPassword}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/double_margin"
+            app:invisible="@{!viewModel.state.loading}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_up_confirm_password" />
+
+        <Button
+            android:id="@+id/sign_up_submit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/double_margin"
+            android:enabled="@{viewModel.state.canSubmit}"
+            android:onClick="@{(view) -> viewModel.onSubmit()}"
+            android:text="@string/sign_up_submit"
+            app:invisible="@{viewModel.state.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_up_confirm_password" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
