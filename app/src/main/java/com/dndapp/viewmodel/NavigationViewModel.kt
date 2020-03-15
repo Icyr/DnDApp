@@ -6,6 +6,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.observe
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
 import java.util.*
 
 class NavigationViewModel {
@@ -30,11 +31,21 @@ interface NavigationCommand {
     fun execute(controller: NavController)
 }
 
-data class Destination(@IdRes val destinationId: Int, val args: Bundle? = null) : NavigationCommand {
+data class Destination(
+    @IdRes val destinationId: Int,
+    val args: Bundle? = null,
+    val popUpTo: PopUpTo? = null
+) : NavigationCommand {
     override fun execute(controller: NavController) {
-        controller.navigate(destinationId, args)
+        val builder = NavOptions.Builder()
+        popUpTo?.let {
+            builder.setPopUpTo(it.destinationId, it.inclusive)
+        }
+        controller.navigate(destinationId, args, builder.build())
     }
 }
+
+data class PopUpTo(@IdRes val destinationId: Int, val inclusive: Boolean = false)
 
 data class Back(@IdRes val destinationId: Int? = null, val inclusive: Boolean = false) : NavigationCommand {
     override fun execute(controller: NavController) {

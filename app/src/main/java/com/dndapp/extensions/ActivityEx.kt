@@ -15,3 +15,14 @@ fun AppCompatActivity.hideSoftwareKeyboard() {
     val view = currentFocus ?: View(this)
     hideSoftwareKeyboard(view)
 }
+
+fun AppCompatActivity.showSoftwareKeyboard(view: View) {
+    ContextCompat.getSystemService(this, InputMethodManager::class.java)?.showSoftInput(
+        view, InputMethodManager.SHOW_IMPLICIT
+    )
+}
+
+fun AppCompatActivity.showSoftwareKeyboard() {
+    val view = currentFocus ?: View(this)
+    showSoftwareKeyboard(view)
+}
