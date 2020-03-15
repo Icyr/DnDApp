@@ -9,11 +9,13 @@ import com.dndapp.model.character.CharacterRepository
 import com.dndapp.viewmodel.NavigationViewModel
 import com.dndapp.viewmodel.SoftKeyboardViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
+
 
 class DndApplication : Application() {
 
@@ -34,12 +36,16 @@ class DndApplication : Application() {
         single { FirebaseAuth.getInstance() }
     }
 
+    private val firebaseFirestoreModule = module{
+        single { FirebaseFirestore.getInstance()}
+    }
+
     override fun onCreate() {
         super.onCreate()
         startKoin {
             androidLogger()
             androidContext(this@DndApplication)
-            modules(mainModule, firebaseModule)
+            modules(mainModule, firebaseModule, firebaseFirestoreModule)
         }
     }
 }
