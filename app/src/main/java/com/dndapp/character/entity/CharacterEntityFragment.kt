@@ -21,13 +21,13 @@ class CharacterEntityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.character_entity_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_character_entity, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CharacterEntityViewModel::class.java)
-        // TODO: Use the ViewModel
+        val characterName = arguments?.let { CharacterEntityFragmentArgs.fromBundle(it).characterName }
     }
 
 }

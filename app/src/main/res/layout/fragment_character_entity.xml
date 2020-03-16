@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="192dp"
         android:layout_marginTop="52dp"
-        android:text="@string/characterName"
+        android:text="@{characterName}"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -46,11 +46,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <fragment
+            <androidx.fragment.app.FragmentContainerView
                 android:id="@+id/com.dndapp.character.entity.stats.CharacterStatsItemFragment"
                 android:name="com.dndapp.character.entity.stats.CharacterStatsItemFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_character_stats_item_list" />
         </LinearLayout>
     </ScrollView>
 

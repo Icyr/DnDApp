@@ -24,4 +24,17 @@
         android:id="@+id/fragment_character_create"
         android:name="com.dndapp.character.create.CharacterCreateFragment"
         tools:layout="@layout/fragment_character_create" />
+
+    <fragment
+        android:id="@+id/fragment_character_entity"
+        android:name="com.dndapp.character.entity.CharacterEntityFragment"
+        tools:layout="@layout/fragment_character_entity" >
+        <action
+            android:id="@+id/action_fragment_character_entity_self"
+            app:destination="@id/fragment_character_entity" />
+        <argument
+            android:name="characterName"
+            app:argType="string"
+            android:defaultValue="default" />
+    </fragment>
 </navigation>

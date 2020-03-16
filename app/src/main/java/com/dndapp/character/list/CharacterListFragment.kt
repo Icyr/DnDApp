@@ -25,7 +25,7 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         if (characterListAdapter == null) {
-            character_list.adapter = CharacterListAdapter()
+            character_list.adapter = CharacterListAdapter(null)
         }
         viewModel.characters.observe(viewLifecycleOwner, Observer {
             characterListAdapter?.setItems(it)
