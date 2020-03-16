@@ -6,12 +6,15 @@ import androidx.databinding.Bindable
 import androidx.lifecycle.ViewModel
 import com.dndapp.BR
 import com.dndapp.R
+import com.dndapp.fireStoreDBModule
+import com.dndapp.roomDBModule
 import com.dndapp.utils.BaseObservableLiveData
 import com.dndapp.viewmodel.Destination
 import com.dndapp.viewmodel.NavigationViewModel
 import com.dndapp.viewmodel.PopUpTo
 import com.dndapp.viewmodel.SoftKeyboardViewModel
 import com.google.firebase.auth.FirebaseAuth
+import org.koin.core.context.loadKoinModules
 
 class SignInViewModel(
     private val firebaseAuth: FirebaseAuth,
@@ -26,6 +29,7 @@ class SignInViewModel(
             softKeyboardViewModel.hide()
             state.value = also { loading = true }
             firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
+                loadKoinModules(fireStoreDBModule)
                 val popUpTo = PopUpTo(R.id.fragment_sign_in, true)
                 navigationViewModel.navigate(Destination(R.id.fragment_character_list, popUpTo = popUpTo))
                 state.value = also { loading = false }
@@ -34,6 +38,12 @@ class SignInViewModel(
     }
 
     fun onSignUp() = navigationViewModel.navigate(Destination(R.id.fragment_sign_up))
+
+    fun onContinueOffline() {
+        loadKoinModules(roomDBModule)
+        val popUpTo = PopUpTo(R.id.fragment_sign_in, true)
+        navigationViewModel.navigate(Destination(R.id.fragment_character_list, popUpTo = popUpTo))
+    }
 }
 
 class SignInState : BaseObservable() {
