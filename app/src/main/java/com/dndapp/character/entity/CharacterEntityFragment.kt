@@ -1,13 +1,14 @@
 package com.dndapp.character.entity
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.dndapp.R
+
 
 class CharacterEntityFragment : Fragment() {
 
@@ -27,7 +28,9 @@ class CharacterEntityFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CharacterEntityViewModel::class.java)
+        val charName: TextView = view!!.findViewById(R.id.fragment_character_entity)
         val characterName = arguments?.let { CharacterEntityFragmentArgs.fromBundle(it).characterName }
+        charName.text = characterName
     }
 
 }
