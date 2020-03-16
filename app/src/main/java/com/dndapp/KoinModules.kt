@@ -24,8 +24,8 @@ val mainModule = module {
     // android view model
     viewModel { CharacterListViewModel(get(), get()) }
     viewModel { CharacterCreateViewModel(get(), get(), get()) }
-    viewModel { SignInViewModel(get(), get(), get()) }
-    viewModel { SignUpViewModel(get(), get(), get()) }
+    viewModel { SignInViewModel(get(), get()) }
+    viewModel { SignUpViewModel(get(), get()) }
     // Firebase
     single { FirebaseAuth.getInstance() }
 }

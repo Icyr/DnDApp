@@ -11,21 +11,18 @@ import com.dndapp.utils.BaseObservableLiveData
 import com.dndapp.viewmodel.Destination
 import com.dndapp.viewmodel.NavigationViewModel
 import com.dndapp.viewmodel.PopUpTo
-import com.dndapp.viewmodel.SoftKeyboardViewModel
 import com.google.firebase.auth.FirebaseAuth
 import org.koin.core.context.loadKoinModules
 
 class SignUpViewModel(
     private val firebaseAuth: FirebaseAuth,
-    private val navigationViewModel: NavigationViewModel,
-    private val softKeyboardViewModel: SoftKeyboardViewModel
+    private val navigationViewModel: NavigationViewModel
 ) : ViewModel() {
 
     val state = BaseObservableLiveData(SignUpState())
 
     fun onSubmit() {
         state.value?.run {
-            softKeyboardViewModel.hide()
             state.value = also { loading = true }
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
                 loadKoinModules(fireStoreDBModule)
