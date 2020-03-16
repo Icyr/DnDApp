@@ -21,7 +21,6 @@ class CharacterCreateViewModel(
     fun onSubmit() {
         state.value?.name?.let {
             softKeyboardViewModel.hide()
-            characterRepository.addCharacterToFireStore(it)
             characterRepository.addCharacter(it)
         }
         navigationViewModel.navigate(Back())

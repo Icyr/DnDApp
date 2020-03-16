@@ -16,12 +16,11 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 
-
 class DndApplication : Application() {
 
     private val mainModule = module {
         // repository
-        single { CharacterRepository() }
+        single { CharacterRepository(get(), get()) }
         // view model
         single { NavigationViewModel() }
         single { SoftKeyboardViewModel() }
@@ -30,14 +29,12 @@ class DndApplication : Application() {
         viewModel { CharacterCreateViewModel(get(), get(), get()) }
         viewModel { SignInViewModel(get(), get(), get()) }
         viewModel { SignUpViewModel(get(), get(), get()) }
-    }
-
-    private val firebaseModule = module {
+        // Firebase
         single { FirebaseAuth.getInstance() }
     }
 
-    private val firebaseFirestoreModule = module{
-        single { FirebaseFirestore.getInstance()}
+    private val fireStoreDBModule = module {
+        single { FirebaseFirestore.getInstance() }
     }
 
     override fun onCreate() {
@@ -45,7 +42,7 @@ class DndApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@DndApplication)
-            modules(mainModule, firebaseModule, firebaseFirestoreModule)
+            modules(mainModule, fireStoreDBModule)
         }
     }
 }
