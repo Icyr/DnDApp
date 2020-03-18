@@ -14,9 +14,10 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 class CharacterListAdapter(
-) : GenericAdapter<String, Character, CharacterViewHolder>(), KoinComponent,
-    CharacterListItemClickHandler {
+) : GenericAdapter<String, Character, CharacterViewHolder>(), KoinComponent, CharacterListItemClickHandler {
+
     private val navigationViewModel by inject<NavigationViewModel>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val binding = ViewCharacterItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
@@ -24,11 +25,10 @@ class CharacterListAdapter(
         return CharacterViewHolder(this, binding)
     }
 
-    override fun onClick() {
-        val args = CharacterEntityFragmentArgs().toBundle()
+    override fun onClick(character: Character) {
+        val args = CharacterEntityFragmentArgs(character.name).toBundle()
         navigationViewModel.navigate(Destination(R.id.fragment_character_entity, args))
     }
-
 }
 
 class CharacterViewHolder(
@@ -43,6 +43,6 @@ class CharacterViewHolder(
     }
 }
 
-public interface CharacterListItemClickHandler {
-    fun onClick()
+interface CharacterListItemClickHandler {
+    fun onClick(character: Character)
 }

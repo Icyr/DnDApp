@@ -28,13 +28,9 @@
     <fragment
         android:id="@+id/fragment_character_entity"
         android:name="com.dndapp.character.entity.CharacterEntityFragment"
-        tools:layout="@layout/fragment_character_entity" >
-        <action
-            android:id="@+id/action_fragment_character_entity_self"
-            app:destination="@id/fragment_character_entity" />
+        tools:layout="@layout/fragment_character_entity">
         <argument
             android:name="name"
-            app:argType="string"
-            android:defaultValue="default" />
+            app:argType="string" />
     </fragment>
 </navigation>

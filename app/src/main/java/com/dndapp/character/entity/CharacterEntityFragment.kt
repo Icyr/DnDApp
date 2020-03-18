@@ -4,19 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import com.dndapp.R
+import kotlinx.android.synthetic.main.fragment_character_entity.*
 
 
 class CharacterEntityFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CharacterEntityFragment()
-    }
-
-    private lateinit var viewModel: CharacterEntityViewModel
+    private val args by navArgs<CharacterEntityFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,12 +21,7 @@ class CharacterEntityFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_character_entity, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CharacterEntityViewModel::class.java)
-        val charName: TextView = view!!.findViewById(R.id.fragment_character_entity)
-        val characterName = arguments?.let { CharacterEntityFragmentArgs.fromBundle(it).name }
-        charName.text = characterName
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        textView.text = args.name
     }
-
 }
