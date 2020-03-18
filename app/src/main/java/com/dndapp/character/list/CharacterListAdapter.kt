@@ -24,7 +24,7 @@ class CharacterListAdapter(
         return CharacterViewHolder(this, binding)
     }
 
-    override fun onClick(position: Int) {
+    override fun onClick() {
         val args = CharacterEntityFragmentArgs().toBundle()
         navigationViewModel.navigate(Destination(R.id.fragment_character_entity, args))
     }
@@ -38,11 +38,11 @@ class CharacterViewHolder(
 
     override fun bind(item: Character) {
         binding.character = item
-        binding.executePendingBindings()
         binding.handler = handler
+        binding.executePendingBindings()
     }
 }
 
 public interface CharacterListItemClickHandler {
-    fun onClick(position: Int)
+    fun onClick()
 }

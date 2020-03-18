@@ -29,7 +29,7 @@ class CharacterEntityFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(CharacterEntityViewModel::class.java)
         val charName: TextView = view!!.findViewById(R.id.fragment_character_entity)
-        val characterName = arguments?.let { CharacterEntityFragmentArgs.fromBundle(it).characterName }
+        val characterName = arguments?.let { CharacterEntityFragmentArgs.fromBundle(it).name }
         charName.text = characterName
     }
 
