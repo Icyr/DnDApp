@@ -33,7 +33,7 @@
             android:id="@+id/action_fragment_character_entity_self"
             app:destination="@id/fragment_character_entity" />
         <argument
-            android:name="characterName"
+            android:name="character.name"
             app:argType="string"
             android:defaultValue="default" />
     </fragment>

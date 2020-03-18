@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import com.dndapp.R
 import com.dndapp.character.entity.CharacterEntityFragmentArgs
 import com.dndapp.databinding.ViewCharacterItemBinding
-import com.dndapp.model.Document
 import com.dndapp.model.character.Character
 import com.dndapp.utils.BindableViewHolder
 import com.dndapp.utils.GenericAdapter
@@ -15,15 +14,14 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 class CharacterListAdapter(
-    private val characterListItemClickHandler: CharacterListItemClickHandler
-) : GenericAdapter<String, Document<Character>, CharacterViewHolder>(), KoinComponent,
+) : GenericAdapter<String, Character, CharacterViewHolder>(), KoinComponent,
     CharacterListItemClickHandler {
     private val navigationViewModel by inject<NavigationViewModel>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
         val binding = ViewCharacterItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        return CharacterViewHolder(characterListItemClickHandler, binding)
+        return CharacterViewHolder(this, binding)
     }
 
     override fun onClick(position: Int) {
@@ -34,21 +32,17 @@ class CharacterListAdapter(
 }
 
 class CharacterViewHolder(
-    private val characterListItemClickHandler:CharacterListItemClickHandler,
+    private val handler: CharacterListItemClickHandler,
     private val binding: ViewCharacterItemBinding
-) : BindableViewHolder<String, Document<Character>>(binding.root), CharacterListItemClickHandler  {
+) : BindableViewHolder<String, Character>(binding.root) {
 
-    override fun bind(item: Document<Character>) {
-        binding.character = item.data
+    override fun bind(item: Character) {
+        binding.character = item
         binding.executePendingBindings()
-        this.characterListItemClickHandler
-    }
-
-    override fun onClick(position: Int) {
-        characterListItemClickHandler.onClick(adapterPosition)
+        binding.handler = handler
     }
 }
 
 public interface CharacterListItemClickHandler {
-    fun onClick(position : Int )
+    fun onClick(position: Int)
 }

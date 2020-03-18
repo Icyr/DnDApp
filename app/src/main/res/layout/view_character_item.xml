@@ -7,6 +7,11 @@
         <variable
             name="character"
             type="com.dndapp.model.character.Character" />
+
+        <variable
+            name="handler"
+            type="com.dndapp.character.list.CharacterListItemClickHandler" />
+
     </data>
 
     <TextView
@@ -14,5 +19,6 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/margin"
         android:text="@{character.name}"
+        android:onClick="@{(view) -> handler.onClick()}"
         tools:text="Mighty Thor" />
 </layout>
