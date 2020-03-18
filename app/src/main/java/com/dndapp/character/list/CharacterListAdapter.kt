@@ -3,7 +3,7 @@ package com.dndapp.character.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.dndapp.R
-import com.dndapp.character.entity.CharacterEntityFragmentArgs
+import com.dndapp.character.view.CharacterViewFragmentArgs
 import com.dndapp.databinding.ViewCharacterItemBinding
 import com.dndapp.model.character.Character
 import com.dndapp.utils.BindableViewHolder
@@ -13,8 +13,8 @@ import com.dndapp.viewmodel.NavigationViewModel
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class CharacterListAdapter(
-) : GenericAdapter<String, Character, CharacterViewHolder>(), KoinComponent, CharacterListItemClickHandler {
+class CharacterListAdapter : GenericAdapter<String, Character, CharacterViewHolder>(),
+    KoinComponent, CharacterListItemClickHandler {
 
     private val navigationViewModel by inject<NavigationViewModel>()
 
@@ -26,8 +26,8 @@ class CharacterListAdapter(
     }
 
     override fun onClick(character: Character) {
-        val args = CharacterEntityFragmentArgs(character.name).toBundle()
-        navigationViewModel.navigate(Destination(R.id.fragment_character_entity, args))
+        val args = CharacterViewFragmentArgs(character.name).toBundle()
+        navigationViewModel.navigate(Destination(R.id.fragment_character_view, args))
     }
 }
 

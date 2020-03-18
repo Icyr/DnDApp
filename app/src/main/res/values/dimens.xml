@@ -2,5 +2,8 @@
 <resources>
     <dimen name="margin">10dp</dimen>
     <dimen name="double_margin">20dp</dimen>
-    <dimen name="text_margin">16dp</dimen>
+    <dimen name="character_view_text_margin">16dp</dimen>
+    <dimen name="character_view_avatar_margin_end">60dp</dimen>
+    <dimen name="character_view_avatar_layout_width">0dp</dimen>
+    <dimen name="character_view_character_name_layout_margin_start">36dp</dimen>
 </resources>
