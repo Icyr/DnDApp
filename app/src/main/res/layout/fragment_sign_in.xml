@@ -29,6 +29,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{!viewModel.state.loading}"
                 android:inputType="textEmailAddress"
                 android:text="@={viewModel.state.email}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -47,6 +48,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{!viewModel.state.loading}"
                 android:inputType="textPassword"
                 android:text="@={viewModel.state.password}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -81,9 +83,21 @@
             android:onClick="@{(view) -> viewModel.onSignUp()}"
             android:text="@string/sign_in_sign_up"
             app:invisible="@{viewModel.state.loading}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/sign_in_continue_offline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sign_in_submit" />
+
+        <Button
+            android:id="@+id/sign_in_continue_offline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:onClick="@{(view) -> viewModel.onContinueOffline()}"
+            android:text="@string/sign_in_continue_offline"
+            app:invisible="@{viewModel.state.loading}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sign_in_sign_up" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

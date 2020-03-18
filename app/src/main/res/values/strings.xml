@@ -8,6 +8,7 @@
     <string name="sign_in_password">Password</string>
     <string name="sign_in_submit">Submit</string>
     <string name="sign_in_sign_up">Sign Up</string>
+    <string name="sign_in_continue_offline">Continue Offline</string>
 
     <string name="sign_up_email">Email</string>
     <string name="sign_up_password">Password</string>

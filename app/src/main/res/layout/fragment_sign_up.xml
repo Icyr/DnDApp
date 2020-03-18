@@ -29,6 +29,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{!viewModel.state.loading}"
                 android:inputType="textEmailAddress"
                 android:text="@={viewModel.state.email}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -47,6 +48,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{!viewModel.state.loading}"
                 android:inputType="textPassword"
                 android:text="@={viewModel.state.password}" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -65,6 +67,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:enabled="@{!viewModel.state.loading}"
                 android:inputType="textPassword"
                 android:text="@={viewModel.state.confirmPassword}" />
         </com.google.android.material.textfield.TextInputLayout>

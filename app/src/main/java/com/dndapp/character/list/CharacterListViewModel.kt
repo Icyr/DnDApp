@@ -11,7 +11,7 @@ class CharacterListViewModel(
     private val navigationViewModel: NavigationViewModel
 ) : ViewModel() {
 
-    val characters = characterRepository.characters
+    val characters = characterRepository.getCharacters()
 
     fun onCreate() = navigationViewModel.navigate(Destination(R.id.fragment_character_create))
 }
