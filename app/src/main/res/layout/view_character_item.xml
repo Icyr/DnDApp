@@ -11,7 +11,6 @@
         <variable
             name="handler"
             type="com.dndapp.character.list.CharacterListItemClickHandler" />
-
     </data>
 
     <TextView
@@ -20,6 +19,5 @@
         android:onClick="@{(view) -> handler.onClick(character)}"
         android:padding="@dimen/margin"
         android:text="@{character.name}"
-        android:onClick="@{(view) -> handler.onClick()}"
         tools:text="Mighty Thor" />
 </layout>

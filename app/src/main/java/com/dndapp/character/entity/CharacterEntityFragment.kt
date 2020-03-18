@@ -22,6 +22,6 @@ class CharacterEntityFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        textView.text = args.name
+        character_name.text = args.name
     }
 }
