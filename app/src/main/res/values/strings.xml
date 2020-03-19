@@ -14,7 +14,4 @@
     <string name="sign_up_password">Password</string>
     <string name="sign_up_confirm_password">Confirm Password</string>
     <string name="sign_up_submit">Sign Up</string>
-    <string name="characterName">characterName</string>
-    <string name="character_view_name_text_view" />
-    <string name="character_view_avatar" />
 </resources>

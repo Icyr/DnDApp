@@ -8,20 +8,20 @@
     tools:context=".character.view.CharacterViewFragment">
 
     <ImageView
-        android:id="@+id/avatar"
-        android:layout_width="@dimen/character_view_avatar_layout_width"
+        android:id="@+id/character_view_avatar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/character_view_avatar_margin_end"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/character_name"
+        app:layout_constraintEnd_toStartOf="@+id/character_view_name"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/character_name"
+        android:id="@+id/character_view_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/character_view_character_name_layout_margin_start"
@@ -29,6 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="4"
-        app:layout_constraintStart_toEndOf="@+id/avatar"
+        app:layout_constraintStart_toEndOf="@+id/character_view_avatar"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

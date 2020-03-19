@@ -14,13 +14,10 @@ class CharacterViewFragment : Fragment() {
     private val args by navArgs<CharacterViewFragmentArgs>()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_character_view, container, false)
-    }
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View? = inflater.inflate(R.layout.fragment_character_view, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        character_name.text = args.name
+        character_view_name.text = args.name
     }
 }
