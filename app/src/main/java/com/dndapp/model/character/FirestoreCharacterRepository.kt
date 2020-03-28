@@ -26,7 +26,13 @@ class FirestoreCharacterRepository(
     init {
         userCharacters?.addSnapshotListener { snapshot, _ ->
             characters.postValue(snapshot?.documents?.map {
-                Character(it.data?.run { get("name") as? String } ?: "", it.id)
+                Character(
+                    it.data?.run
+                    { get("name") as? String } ?: "",
+                    it.data?.run
+                    { get("race") as? String } ?: ""
+                    , it.id
+                )
             }.orEmpty())
         }
     }

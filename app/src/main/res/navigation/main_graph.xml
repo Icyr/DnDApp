@@ -35,7 +35,7 @@
         android:name="com.dndapp.character.view.CharacterViewFragment"
         tools:layout="@layout/fragment_character_view">
         <argument
-            android:name="name"
-            app:argType="string" />
+            android:name="character"
+            app:argType="com.dndapp.model.character.Character" />
     </fragment>
 </navigation>

@@ -26,7 +26,7 @@ class CharacterListAdapter : GenericAdapter<String, Character, CharacterViewHold
     }
 
     override fun onClick(character: Character) {
-        val args = CharacterViewFragmentArgs(character.name).toBundle()
+        val args = CharacterViewFragmentArgs(character).toBundle()
         navigationViewModel.navigate(Destination(R.id.fragment_character_view, args))
     }
 }
