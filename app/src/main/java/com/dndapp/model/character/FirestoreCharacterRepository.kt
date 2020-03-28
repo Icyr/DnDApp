@@ -8,6 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 
+
 class FirestoreCharacterRepository(
     private val db: FirebaseFirestore,
     private val auth: FirebaseAuth
@@ -33,6 +34,10 @@ class FirestoreCharacterRepository(
     override fun getCharacters(): LiveData<List<Character>> = characters
 
     override fun addCharacter(character: Character) {
-        userCharacters?.add(hashMapOf("name" to character.name))
+        userCharacters?.add(hashMapOf("name" to character.name, "race" to character.race))
+    }
+
+    override fun updateCharacter(character: Character) {
+        TODO("Not yet implemented")
     }
 }

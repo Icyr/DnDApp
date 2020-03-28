@@ -16,10 +16,10 @@
         android:paddingEnd="@dimen/double_margin">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/create_name_input_layout"
+            android:id="@+id/create_race_input_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="@string/create_character_input_label"
+            android:hint="@string/create_race_input_label"
             app:layout_constraintBottom_toTopOf="@id/create_race"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
-                android:text="@={viewModel.state.name}" />
+                android:text="@={viewModel.state.race}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
@@ -38,12 +38,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/double_margin"
-            android:enabled="@{viewModel.state.canNext}"
-            android:onClick="@{(view) -> viewModel.onNext()}"
-            android:text="@string/create_character_race_label"
+            android:enabled="@{viewModel.state.canSubmit}"
+            android:onClick="@{(view) -> viewModel.onSubmit()}"
+            android:text="@string/create_character_submit_label"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/create_name_input_layout" />
+            app:layout_constraintTop_toBottomOf="@id/create_race_input_layout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

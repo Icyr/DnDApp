@@ -9,5 +9,6 @@ import java.util.*
 @Entity
 data class Character(
     val name: String,
+    val race: String,
     @PrimaryKey override val id: String = UUID.randomUUID().toString()
 ) : HasId<String>, Serializable

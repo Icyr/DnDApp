@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface CharacterRepository {
@@ -13,4 +14,7 @@ interface CharacterRepository {
 
     @Insert
     fun addCharacter(character: Character)
+
+    @Update
+    fun updateCharacter(character: Character)
 }
