@@ -1,6 +1,6 @@
 package com.dndapp.landing.signup
 
-import android.util.Patterns
+import androidx.core.util.PatternsCompat
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.ViewModel
@@ -23,6 +23,9 @@ class SignUpViewModel(
 
     fun onSubmit() {
         state.value?.run {
+            if (!canSubmit) {
+                return
+            }
             state.value = also { loading = true }
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
                 loadKoinModules(fireStoreDBModule)
@@ -65,7 +68,7 @@ class SignUpState : BaseObservable() {
 
     val canSubmit: Boolean
         get() = email.isNotBlank() &&
-                Patterns.EMAIL_ADDRESS.matcher(email).matches() &&
+                PatternsCompat.EMAIL_ADDRESS.matcher(email).matches() &&
                 password.isNotBlank() &&
                 confirmPassword == password
 }
