@@ -12,7 +12,7 @@ class DndApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@DndApplication)
-            modules(mainModule)
+            modules(mainModule, firebaseAuthModule)
         }
     }
 }
