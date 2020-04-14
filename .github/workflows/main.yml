@@ -15,6 +15,10 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Setup Google Services
+      run: bash cat $GOOGLE_SERVICES > ./app/google-services.json
+      env:
+        GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
     - name: Unit Tests
       run: bash ./gradlew test --stacktrace
       
@@ -28,6 +32,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Setup Google Services
+        run: bash cat $GOOGLE_SERVICES > ./app/google-services.json
+        env:
+          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
       - name: Build debug APK
         run: bash ./gradlew assembleDebug --stacktrace
       - name: Upload APK
