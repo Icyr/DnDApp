@@ -16,7 +16,8 @@ jobs:
       with:
         java-version: 1.8
     - name: Setup Google Services
-      run: bash echo "$GOOGLE_SERVICES" > ./app/google-services.json
+      run: 'echo "TESTING" > ./app/google-services.json'
+      shell: bash
       env:
         GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
     - name: Unit Tests
@@ -33,7 +34,8 @@ jobs:
         with:
           java-version: 1.8
       - name: Setup Google Services
-        run: bash echo "$GOOGLE_SERVICES" > ./app/google-services.json
+        run: 'echo "$GOOGLE_SERVICES" > ./app/google-services.json'
+        shell: bash
         env:
           GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
       - name: Build debug APK
