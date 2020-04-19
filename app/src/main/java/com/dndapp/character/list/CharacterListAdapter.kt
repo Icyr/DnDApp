@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.dndapp.R
 import com.dndapp.character.view.CharacterViewFragmentArgs
-import com.dndapp.databinding.ViewCharacterItemBinding
+import com.dndapp.databinding.ItemCharacterBinding
 import com.dndapp.model.character.Character
 import com.dndapp.utils.BindableViewHolder
 import com.dndapp.utils.GenericAdapter
@@ -19,7 +19,7 @@ class CharacterListAdapter : GenericAdapter<Long, Character, CharacterViewHolder
     private val navigationViewModel by inject<NavigationViewModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
-        val binding = ViewCharacterItemBinding.inflate(
+        val binding = ItemCharacterBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
         return CharacterViewHolder(this, binding)
@@ -33,7 +33,7 @@ class CharacterListAdapter : GenericAdapter<Long, Character, CharacterViewHolder
 
 class CharacterViewHolder(
     private val handler: CharacterListItemClickHandler,
-    private val binding: ViewCharacterItemBinding
+    private val binding: ItemCharacterBinding
 ) : BindableViewHolder<Long, Character>(binding.root) {
 
     override fun bind(item: Character) {

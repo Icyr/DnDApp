@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="character"
+            type="com.dndapp.model.character.Character" />
+
+        <variable
+            name="handler"
+            type="com.dndapp.character.list.CharacterListItemClickHandler" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> handler.onClick(character)}"
+        android:paddingStart="@dimen/double_margin"
+        android:paddingTop="@dimen/margin"
+        android:paddingEnd="@dimen/double_margin"
+        android:paddingBottom="@dimen/margin">
+
+        <TextView
+            android:id="@+id/character_name"
+            style="@style/TextAppearance.MaterialComponents.Headline5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{character.name}"
+            app:layout_constraintBottom_toTopOf="@id/character_race"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="50dp"
+            tools:text="Mighty Thor" />
+
+        <TextView
+            android:id="@+id/character_race"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{character.race.name}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/character_name"
+            tools:layout_editor_absoluteX="20dp"
+            tools:layout_editor_absoluteY="10dp"
+            tools:text="Asgardian" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

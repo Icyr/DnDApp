@@ -32,7 +32,9 @@ class CharacterCreateRaceFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        create_race_spinner.adapter = RaceListAdapter(requireContext())
+        if (adapter == null) {
+            create_race_spinner.adapter = RaceListAdapter(requireContext())
+        }
         // TODO make a binding adapter for this
         create_race_spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
