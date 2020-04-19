@@ -12,6 +12,7 @@ import com.dndapp.model.race.Race
 import com.dndapp.utils.BaseObservableLiveData
 import com.dndapp.viewmodel.Destination
 import com.dndapp.viewmodel.NavigationViewModel
+import com.dndapp.viewmodel.PopUpTo
 import com.dndapp.viewmodel.SoftKeyboardViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -32,7 +33,12 @@ class CharacterCreateViewModel(
             }
         }
 
-        navigationViewModel.navigate(Destination(R.id.fragment_character_list))
+        navigationViewModel.navigate(
+            Destination(
+                R.id.fragment_character_list,
+                popUpTo = PopUpTo(R.id.fragment_character_list, true)
+            )
+        )
     }
 }
 
