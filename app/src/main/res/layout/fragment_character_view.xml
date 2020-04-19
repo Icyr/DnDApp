@@ -14,6 +14,7 @@
         android:layout_marginEnd="@dimen/character_view_avatar_margin_end"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/character_view_name"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="6"
@@ -30,5 +31,19 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_weight="4"
         app:layout_constraintStart_toEndOf="@+id/character_view_avatar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/character_view_race"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/character_view_character_name_layout_margin_start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toEndOf="@+id/character_view_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/character_view_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

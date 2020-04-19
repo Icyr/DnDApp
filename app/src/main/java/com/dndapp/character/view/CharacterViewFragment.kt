@@ -18,6 +18,7 @@ class CharacterViewFragment : Fragment() {
     ): View? = inflater.inflate(R.layout.fragment_character_view, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        character_view_name.text = args.name
+        character_view_name.text = args.character.name
+        character_view_race.text = args.character.race.name
     }
 }

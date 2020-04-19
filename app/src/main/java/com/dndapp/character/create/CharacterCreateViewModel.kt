@@ -5,11 +5,14 @@ import androidx.databinding.Bindable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dndapp.BR
+import com.dndapp.R
 import com.dndapp.model.character.Character
 import com.dndapp.model.character.CharacterRepository
+import com.dndapp.model.race.Race
 import com.dndapp.utils.BaseObservableLiveData
-import com.dndapp.viewmodel.Back
+import com.dndapp.viewmodel.Destination
 import com.dndapp.viewmodel.NavigationViewModel
+import com.dndapp.viewmodel.PopUpTo
 import com.dndapp.viewmodel.SoftKeyboardViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,13 +26,19 @@ class CharacterCreateViewModel(
     val state = BaseObservableLiveData(CharacterCreateState())
 
     fun onSubmit() {
-        state.value?.name?.let {
+        state.value?.let { it ->
             softKeyboardViewModel.hide()
             viewModelScope.launch(Dispatchers.IO) {
-                characterRepository.addCharacter(Character(it))
+                characterRepository.add(Character(it.name, it.race!!))
             }
         }
-        navigationViewModel.navigate(Back())
+
+        navigationViewModel.navigate(
+            Destination(
+                R.id.fragment_character_list,
+                popUpTo = PopUpTo(R.id.fragment_character_list, true)
+            )
+        )
     }
 }
 
@@ -41,6 +50,10 @@ class CharacterCreateState : BaseObservable() {
             notifyPropertyChanged(BR.name)
         }
 
-    val canSubmit: Boolean
-        get() = name.isNotBlank()
+    @get:Bindable
+    var race: Race? = null
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.race)
+        }
 }
