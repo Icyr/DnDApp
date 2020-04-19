@@ -32,5 +32,6 @@ class CharacterListFragment : Fragment() {
         viewModel.characters.observe(viewLifecycleOwner, Observer {
             characterListAdapter?.setItems(it)
         })
+      //  viewModel.test() uncomment to test
     }
 }
