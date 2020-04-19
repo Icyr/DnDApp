@@ -1,6 +1,6 @@
 package com.dndapp.landing.signin
 
-import android.util.Patterns
+import androidx.core.util.PatternsCompat
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.ViewModel
@@ -53,7 +53,7 @@ class SignInState : BaseObservable() {
         }
 
     val canSubmit: Boolean
-        get() = email.isNotBlank() && Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.isNotBlank()
+        get() = email.isNotBlank() && PatternsCompat.EMAIL_ADDRESS.matcher(email).matches() && password.isNotBlank()
 }
 
 

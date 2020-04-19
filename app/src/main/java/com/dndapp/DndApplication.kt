@@ -19,6 +19,7 @@ class DndApplication : Application() {
             androidContext(this@DndApplication)
             modules(mainModule, roomDBModule)
         }
+        // TODO extract to initializer
         val raceDao = get<RaceDao>()
         GlobalScope.launch {
             raceDao.insertIgnoreConflict(RaceEntity("Human", 1))
