@@ -8,8 +8,11 @@ import com.dndapp.BR
 import com.dndapp.R
 import com.dndapp.model.character.Character
 import com.dndapp.model.character.CharacterRepository
+import com.dndapp.model.race.Race
 import com.dndapp.utils.BaseObservableLiveData
-import com.dndapp.viewmodel.*
+import com.dndapp.viewmodel.Destination
+import com.dndapp.viewmodel.NavigationViewModel
+import com.dndapp.viewmodel.SoftKeyboardViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -21,21 +24,16 @@ class CharacterCreateViewModel(
 
     val state = BaseObservableLiveData(CharacterCreateState())
 
-    fun onNext() {
-       navigationViewModel.navigate(Destination(R.id.fragment_character_race))
-    }
-
     fun onSubmit() {
         state.value?.let { it ->
             softKeyboardViewModel.hide()
             viewModelScope.launch(Dispatchers.IO) {
-                characterRepository.addCharacter(Character(it.name, it.race))
+                characterRepository.add(Character(it.name, it.race!!))
             }
         }
 
         navigationViewModel.navigate(Destination(R.id.fragment_character_list))
     }
-
 }
 
 class CharacterCreateState : BaseObservable() {
@@ -47,15 +45,9 @@ class CharacterCreateState : BaseObservable() {
         }
 
     @get:Bindable
-    var race: String = ""
+    var race: Race? = null
         set(value) {
             field = value
             notifyPropertyChanged(BR.race)
         }
-
-    val canNext: Boolean
-        get() = name.isNotBlank()
-
-    val canSubmit: Boolean
-        get() = race.isNotBlank()
 }

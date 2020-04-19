@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/character_create_graph"
+    app:startDestination="@id/fragment_character_create_name">
+
+    <fragment
+        android:id="@+id/fragment_character_create_name"
+        android:name="com.dndapp.character.create.name.CharacterCreateNameFragment"
+        tools:layout="@layout/fragment_character_create_name" />
+
+    <fragment
+        android:id="@+id/fragment_character_create_race"
+        android:name="com.dndapp.character.create.race.CharacterCreateRaceFragment"
+        tools:layout="@layout/fragment_character_create_race" />
+</navigation>

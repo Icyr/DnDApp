@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">DnDApp</string>
 
-    <string name="create_character_input_label">Give your character a name</string>
-    <string name="create_race_input_label">Give your character a race</string>
+    <string name="create_character_name_input_label">Name</string>
+    <string name="create_character_race_input_label">Race</string>
 
     <string name="create_character_submit_label">Submit</string>
-    <string name="create_character_race_label">Next</string>
+    <string name="create_character_next_label">Next</string>
+    <string name="create_character_back_label">Back</string>
 
     <string name="sign_in_email">Email</string>
     <string name="sign_in_password">Password</string>
@@ -17,5 +18,4 @@
     <string name="sign_up_password">Password</string>
     <string name="sign_up_confirm_password">Confirm Password</string>
     <string name="sign_up_submit">Sign Up</string>
-    <string name="default_race">human</string>
 </resources>

@@ -13,7 +13,7 @@ import com.dndapp.viewmodel.NavigationViewModel
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class CharacterListAdapter : GenericAdapter<String, Character, CharacterViewHolder>(),
+class CharacterListAdapter : GenericAdapter<Long, Character, CharacterViewHolder>(),
     KoinComponent, CharacterListItemClickHandler {
 
     private val navigationViewModel by inject<NavigationViewModel>()
@@ -34,7 +34,7 @@ class CharacterListAdapter : GenericAdapter<String, Character, CharacterViewHold
 class CharacterViewHolder(
     private val handler: CharacterListItemClickHandler,
     private val binding: ViewCharacterItemBinding
-) : BindableViewHolder<String, Character>(binding.root) {
+) : BindableViewHolder<Long, Character>(binding.root) {
 
     override fun bind(item: Character) {
         binding.character = item

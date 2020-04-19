@@ -19,6 +19,6 @@ class CharacterViewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         character_view_name.text = args.character.name
-        character_view_race.text = args.character.race
+        character_view_race.text = args.character.race.name
     }
 }
