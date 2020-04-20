@@ -25,17 +25,15 @@ class CharacterListViewModel(
 
     val state = BaseObservableLiveData(CharacterListView())
 
-    fun onCreate() = navigationViewModel.navigate(Destination(R.id.character_create_graph))
-
-
     init {
         loadCharacters()
     }
 
+    fun onCreate() = navigationViewModel.navigate(Destination(R.id.character_create_graph))
+
     fun loadCharacters(){
         viewModelScope.launch(Dispatchers.IO) {
             state.value!!.loading = true
-            delay(5000)
             characters.postValue(
                 characterRepository.loadCharacters()
             )
