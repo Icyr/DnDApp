@@ -23,7 +23,7 @@ class CharacterListViewModel(
 
     val characters = MutableLiveData<List<Character>>()
 
-    val state = BaseObservableLiveData(CharacterListView())
+    val state = BaseObservableLiveData(CharacterListState())
 
     init {
         loadCharacters()
@@ -41,7 +41,7 @@ class CharacterListViewModel(
         }
     }
 
-    class CharacterListView : BaseObservable() {
+    class CharacterListState : BaseObservable() {
 
         @get:Bindable
         var loading: Boolean = false
