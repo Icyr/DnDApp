@@ -17,7 +17,7 @@ class BaseObservableLiveData<T : BaseObservable>(initialValue: T) : MutableLiveD
     init {
         initialValue.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-                value = value
+                postValue(value)
             }
         })
     }
