@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import com.dndapp.R
-import kotlinx.android.synthetic.main.fragment_character_view.*
+import com.dndapp.databinding.FragmentCharacterViewBinding
 
 class CharacterViewFragment : Fragment() {
 
@@ -15,10 +14,9 @@ class CharacterViewFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_character_view, container, false)
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        character_view_name.text = args.character.name
-        character_view_race.text = args.character.race.name
+    ): View? {
+        return FragmentCharacterViewBinding.inflate(inflater, container, false).also {
+            it.character = args.character
+        }.root
     }
 }
