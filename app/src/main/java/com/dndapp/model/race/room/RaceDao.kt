@@ -1,6 +1,5 @@
 package com.dndapp.model.race.room
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.dndapp.model.BaseDao
@@ -9,5 +8,5 @@ import com.dndapp.model.BaseDao
 interface RaceDao : BaseDao<RaceEntity> {
 
     @Query("SELECT * FROM race")
-    fun getRaces(): LiveData<List<RaceEntity>>
+    fun getRaces(): List<RaceEntity>
 }

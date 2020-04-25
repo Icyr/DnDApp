@@ -4,18 +4,18 @@
     <data>
 
         <variable
-            name="race"
-            type="com.dndapp.model.race.Race" />
+            name="background"
+            type="com.dndapp.model.background.Background" />
 
         <variable
             name="clickHandler"
-            type="com.dndapp.utils.OnItemClickHandler&lt;com.dndapp.model.race.Race>" />
+            type="com.dndapp.utils.OnItemClickHandler&lt;com.dndapp.model.background.Background>" />
     </data>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(view) -> clickHandler.onClick(race)}"
+        android:onClick="@{(view) -> clickHandler.onClick(background)}"
         android:padding="@dimen/margin"
-        android:text="@{race.name}" />
+        android:text="@{background.name}" />
 </layout>

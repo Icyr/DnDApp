@@ -14,4 +14,19 @@
         android:id="@+id/fragment_character_create_race"
         android:name="com.dndapp.character.create.race.CharacterCreateRaceFragment"
         tools:layout="@layout/fragment_character_create_race" />
+
+    <fragment
+        android:id="@+id/fragment_race_list"
+        android:name="com.dndapp.character.create.race.RaceListFragment"
+        tools:layout="@layout/fragment_base_list" />
+
+    <fragment
+        android:id="@+id/fragment_character_create_background"
+        android:name="com.dndapp.character.create.background.CharacterCreateBackgroundFragment"
+        tools:layout="@layout/fragment_character_create_background" />
+
+    <fragment
+        android:id="@+id/fragment_background_list"
+        android:name="com.dndapp.character.create.background.BackgroundListFragment"
+        tools:layout="@layout/fragment_base_list" />
 </navigation>

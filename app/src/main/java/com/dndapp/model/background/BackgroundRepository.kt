@@ -1,15 +1,14 @@
 package com.dndapp.model.background
 
-import androidx.lifecycle.Transformations
+import com.dndapp.model.Repository
 import com.dndapp.model.background.room.BackgroundDao
 import com.dndapp.model.background.room.BackgroundEntity
 
-class BackgroundRepository(backgroundDao: BackgroundDao) {
+class BackgroundRepository(private val backgroundDao: BackgroundDao) : Repository<Background> {
 
     val transformation: (entity: BackgroundEntity) -> Background = {
         Background(it.name, it.id)
     }
-    val backgrounds = Transformations.map(backgroundDao.getBackgrounds()) {
-        it.map(transformation)
-    }
+
+    override fun loadAll(): List<Background> = backgroundDao.getBackgrounds().map(transformation)
 }
