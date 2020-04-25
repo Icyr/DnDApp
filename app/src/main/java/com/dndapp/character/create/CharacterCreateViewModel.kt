@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dndapp.BR
 import com.dndapp.R
+import com.dndapp.model.background.Background
 import com.dndapp.model.character.Character
 import com.dndapp.model.character.CharacterRepository
 import com.dndapp.model.race.Race
@@ -26,10 +27,14 @@ class CharacterCreateViewModel(
     val state = BaseObservableLiveData(CharacterCreateState())
 
     fun onSubmit() {
-        state.value?.let { it ->
+        state.value?.let { state ->
             softKeyboardViewModel.hide()
-            viewModelScope.launch(Dispatchers.IO) {
-                characterRepository.add(Character(it.name, it.race!!))
+            val race = state.race
+            val background = state.background
+            if (race != null && background != null) {
+                viewModelScope.launch(Dispatchers.IO) {
+                    characterRepository.add(Character(state.name, race, background))
+                }
             }
         }
 
@@ -55,5 +60,12 @@ class CharacterCreateState : BaseObservable() {
         set(value) {
             field = value
             notifyPropertyChanged(BR.race)
+        }
+
+    @get:Bindable
+    var background: Background? = null
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.background)
         }
 }
