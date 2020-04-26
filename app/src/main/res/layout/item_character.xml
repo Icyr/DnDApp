@@ -10,14 +10,14 @@
             type="com.dndapp.model.character.Character" />
 
         <variable
-            name="handler"
-            type="com.dndapp.character.list.CharacterListItemClickHandler" />
+            name="clickHandler"
+            type="com.dndapp.utils.OnItemClickHandler&lt;com.dndapp.model.character.Character>" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{(view) -> handler.onClick(character)}"
+        android:onClick="@{(view) -> clickHandler.onClick(character)}"
         android:paddingStart="@dimen/double_margin"
         android:paddingTop="@dimen/margin"
         android:paddingEnd="@dimen/double_margin"

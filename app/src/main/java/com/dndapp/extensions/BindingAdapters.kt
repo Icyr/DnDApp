@@ -1,14 +1,13 @@
 package com.dndapp.extensions
 
 import android.view.View
-import androidx.core.view.isInvisible
 import androidx.databinding.BindingAdapter
 
 object BindingAdapters {
 
-    @BindingAdapter("invisible")
+    @BindingAdapter("visible")
     @JvmStatic
     fun visible(view: View, value: Boolean) {
-        view.isInvisible = value
+        view.visibility = if (value) View.VISIBLE else View.INVISIBLE
     }
 }

@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.dndapp.character.create.race.CharacterCreateRaceViewModel" />
+            type="com.dndapp.character.create.background.CharacterCreateBackgroundViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,9 +22,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/create_character_race_input_label"
+            android:hint="@string/create_character_background_input_label"
             android:onClick="@{(view) -> viewModel.onGoToList()}"
-            app:layout_constraintBottom_toTopOf="@+id/create_race_back"
+            app:layout_constraintBottom_toTopOf="@+id/create_background_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -34,25 +34,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/create_character_select"
-                android:text="@{sharedViewModel.state.race.name}" />
+                android:text="@{sharedViewModel.state.background.name}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/create_race_back"
+            android:id="@+id/create_background_back"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:onClick="@{(view) -> viewModel.onBack()}"
             android:text="@string/create_character_back_label"
-            app:layout_constraintBottom_toTopOf="@+id/create_race_next"
+            app:layout_constraintBottom_toTopOf="@+id/create_background_submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
-            android:id="@+id/create_race_next"
+            android:id="@+id/create_background_submit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{(view) -> viewModel.onNext()}"
-            android:text="@string/create_character_next_label"
+            android:onClick="@{(view) -> sharedViewModel.onSubmit()}"
+            android:text="@string/create_character_submit_label"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

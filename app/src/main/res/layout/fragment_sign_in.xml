@@ -57,10 +57,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/double_margin"
-            app:invisible="@{!viewModel.state.loading}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sign_in_password" />
+            app:layout_constraintTop_toBottomOf="@id/sign_in_password"
+            app:visible="@{viewModel.state.loading}" />
 
         <Button
             android:id="@+id/sign_in_submit"
@@ -70,11 +70,11 @@
             android:enabled="@{viewModel.state.canSubmit}"
             android:onClick="@{(view) -> viewModel.onSubmit()}"
             android:text="@string/sign_in_submit"
-            app:invisible="@{viewModel.state.loading}"
             app:layout_constraintBottom_toTopOf="@id/sign_in_sign_up"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sign_in_password" />
+            app:layout_constraintTop_toBottomOf="@id/sign_in_password"
+            app:visible="@{!viewModel.state.loading}" />
 
         <Button
             android:id="@+id/sign_in_sign_up"
@@ -82,11 +82,11 @@
             android:layout_height="wrap_content"
             android:onClick="@{(view) -> viewModel.onSignUp()}"
             android:text="@string/sign_in_sign_up"
-            app:invisible="@{viewModel.state.loading}"
             app:layout_constraintBottom_toTopOf="@id/sign_in_continue_offline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sign_in_submit" />
+            app:layout_constraintTop_toBottomOf="@id/sign_in_submit"
+            app:visible="@{!viewModel.state.loading}" />
 
         <Button
             android:id="@+id/sign_in_continue_offline"
@@ -94,10 +94,10 @@
             android:layout_height="wrap_content"
             android:onClick="@{(view) -> viewModel.onContinueOffline()}"
             android:text="@string/sign_in_continue_offline"
-            app:invisible="@{viewModel.state.loading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sign_in_sign_up" />
+            app:layout_constraintTop_toBottomOf="@id/sign_in_sign_up"
+            app:visible="@{!viewModel.state.loading}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

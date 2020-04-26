@@ -76,10 +76,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/double_margin"
-            app:invisible="@{!viewModel.state.loading}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sign_up_confirm_password" />
+            app:layout_constraintTop_toBottomOf="@id/sign_up_confirm_password"
+            app:visible="@{viewModel.state.loading}" />
 
         <Button
             android:id="@+id/sign_up_submit"
@@ -89,10 +89,10 @@
             android:enabled="@{viewModel.state.canSubmit}"
             android:onClick="@{(view) -> viewModel.onSubmit()}"
             android:text="@string/sign_up_submit"
-            app:invisible="@{viewModel.state.loading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sign_up_confirm_password" />
+            app:layout_constraintTop_toBottomOf="@id/sign_up_confirm_password"
+            app:visible="@{!viewModel.state.loading}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
