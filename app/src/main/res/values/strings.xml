@@ -4,6 +4,7 @@
     <string name="create_character_name_input_label">Name</string>
     <string name="create_character_race_input_label">Race</string>
     <string name="create_character_background_input_label">Background</string>
+    <string name="create_character_class_input_label">Class</string>
     <string name="create_character_select">Select</string>
 
     <string name="create_character_submit_label">Submit</string>
