@@ -12,14 +12,14 @@ import java.io.Serializable
     foreignKeys = [
         ForeignKey(entity = RaceEntity::class, parentColumns = ["id"], childColumns = ["race_id"]),
         ForeignKey(entity = BackgroundEntity::class, parentColumns = ["id"], childColumns = ["background_id"]),
-        ForeignKey(entity = CharacterClassEntity::class, parentColumns = ["id"], childColumns = ["character_class"])
+        ForeignKey(entity = CharacterClassEntity::class, parentColumns = ["id"], childColumns = ["character_class_id"])
     ],
-    indices = [Index("race_id"), Index("background_id"), Index("character_class")]
+    indices = [Index("race_id"), Index("background_id"), Index("character_class_id")]
 )
 data class CharacterEntity(
     val name: String,
     @ColumnInfo(name = "race_id") val raceId: Long,
     @ColumnInfo(name = "background_id") val backgroundId: Long,
-    @ColumnInfo(name = "character_class") val characterClass: Long,
+    @ColumnInfo(name = "character_class_id") val characterClass: Long,
     @PrimaryKey(autoGenerate = true) override val id: Long = 0
 ) : HasId<Long>, Serializable

@@ -75,6 +75,6 @@ class CharacterCreateState : BaseObservable() {
     var characterClass: CharacterClass? = null
         set(value) {
             field = value
-            notifyPropertyChanged(BR.background)
+            notifyPropertyChanged(BR.characterClass)
         }
 }
