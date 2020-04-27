@@ -29,4 +29,14 @@
         android:id="@+id/fragment_background_list"
         android:name="com.dndapp.character.create.background.BackgroundListFragment"
         tools:layout="@layout/fragment_base_list" />
+
+    <fragment
+        android:id="@+id/fragment_character_create_class"
+        android:name="com.dndapp.character.create.characterClass.CharacterCreateClassFragment"
+        tools:layout="@layout/fragment_character_create_class" />
+
+    <fragment
+        android:id="@+id/fragment_character_class_list"
+        android:name="com.dndapp.character.create.characterClass.CharacterClassListFragment"
+        tools:layout="@layout/fragment_base_list" />
 </navigation>
