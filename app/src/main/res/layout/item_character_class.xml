@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="characterClass"
+            type="com.dndapp.model.characterClass.CharacterClass" />
+
+        <variable
+            name="clickHandler"
+            type="com.dndapp.utils.OnItemClickHandler&lt;com.dndapp.model.characterClass.CharacterClass>" />
+    </data>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> clickHandler.onClick(characterClass)}"
+        android:padding="@dimen/margin"
+        android:text="@{characterClass.name}" />
+</layout>

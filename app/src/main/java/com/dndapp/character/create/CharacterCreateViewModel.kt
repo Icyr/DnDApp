@@ -9,6 +9,7 @@ import com.dndapp.R
 import com.dndapp.model.background.Background
 import com.dndapp.model.character.Character
 import com.dndapp.model.character.CharacterRepository
+import com.dndapp.model.characterClass.CharacterClass
 import com.dndapp.model.race.Race
 import com.dndapp.utils.BaseObservableLiveData
 import com.dndapp.viewmodel.Destination
@@ -31,9 +32,10 @@ class CharacterCreateViewModel(
             softKeyboardViewModel.hide()
             val race = state.race
             val background = state.background
-            if (race != null && background != null) {
+            val characterClass = state.characterClass
+            if (race != null && background != null && characterClass != null ) {
                 viewModelScope.launch(Dispatchers.IO) {
-                    characterRepository.add(Character(state.name, race, background))
+                    characterRepository.add(Character(state.name, race, background, characterClass))
                 }
             }
         }
@@ -67,5 +69,12 @@ class CharacterCreateState : BaseObservable() {
         set(value) {
             field = value
             notifyPropertyChanged(BR.background)
+        }
+
+    @get:Bindable
+    var characterClass: CharacterClass? = null
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.characterClass)
         }
 }
