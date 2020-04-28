@@ -20,6 +20,6 @@ data class CharacterEntity(
     val name: String,
     @ColumnInfo(name = "race_id") val raceId: Long,
     @ColumnInfo(name = "background_id") val backgroundId: Long,
-    @ColumnInfo(name = "character_class_id") val characterClass: Long,
+    @ColumnInfo(name = "character_class_id") val characterClassId: Long,
     @PrimaryKey(autoGenerate = true) override val id: Long = 0
 ) : HasId<Long>, Serializable
