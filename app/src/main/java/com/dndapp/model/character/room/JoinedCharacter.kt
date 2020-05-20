@@ -12,5 +12,5 @@ data class JoinedCharacter(
     @Relation(parentColumn = "race_id", entityColumn = "id") val race: RaceEntity,
     @Relation(parentColumn = "background_id", entityColumn = "id") val background: BackgroundEntity,
     @Relation(parentColumn = "character_class_id", entityColumn = "id") val characterClass: CharacterClassEntity,
-    @Embedded(prefix = "ability_scores_id_") val abilityScores: AbilityScoresEntity
+    @Embedded val abilityScores: AbilityScoresEntity
 )

@@ -25,6 +25,6 @@ data class CharacterEntity(
     @ColumnInfo(name = "race_id") val raceId: Long,
     @ColumnInfo(name = "background_id") val backgroundId: Long,
     @ColumnInfo(name = "character_class_id") val characterClassId: Long,
-    @Embedded(prefix = "ability_scores_id_")   val abilityScores: AbilityScores,
+    @Embedded(prefix = "ability_scores_")   val abilityScores: AbilityScores,
     @PrimaryKey(autoGenerate = true) override val id: Long = 0
 ) : HasId<Long>, Serializable
