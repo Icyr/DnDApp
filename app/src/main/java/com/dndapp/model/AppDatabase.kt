@@ -2,6 +2,7 @@ package com.dndapp.model
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.dndapp.model.abilityscores.room.AbilityScoresEntity
 import com.dndapp.model.background.room.BackgroundDao
 import com.dndapp.model.background.room.BackgroundEntity
 import com.dndapp.model.character.room.CharacterDao
@@ -13,7 +14,7 @@ import com.dndapp.model.race.room.RaceEntity
 
 const val DATABASE_NAME = "dnd_app_db"
 
-@Database(entities = [CharacterEntity::class, RaceEntity::class, BackgroundEntity::class, CharacterClassEntity::class], version = 1)
+@Database(entities = [CharacterEntity::class, RaceEntity::class, BackgroundEntity::class, CharacterClassEntity::class, AbilityScoresEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun characterDao(): CharacterDao

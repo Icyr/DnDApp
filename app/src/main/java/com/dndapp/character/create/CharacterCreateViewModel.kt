@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dndapp.BR
 import com.dndapp.R
+import com.dndapp.model.abilityscores.AbilityScores
 import com.dndapp.model.background.Background
 import com.dndapp.model.character.Character
 import com.dndapp.model.character.CharacterRepository
@@ -33,9 +34,10 @@ class CharacterCreateViewModel(
             val race = state.race
             val background = state.background
             val characterClass = state.characterClass
+            val abilityScores = state.abilityScores
             if (race != null && background != null && characterClass != null ) {
                 viewModelScope.launch(Dispatchers.IO) {
-                    characterRepository.add(Character(state.name, race, background, characterClass))
+                    characterRepository.add(Character(state.name, race, background, characterClass, abilityScores))
                 }
             }
         }
@@ -76,5 +78,12 @@ class CharacterCreateState : BaseObservable() {
         set(value) {
             field = value
             notifyPropertyChanged(BR.characterClass)
+        }
+
+    @get:Bindable
+    var abilityScores: AbilityScores = AbilityScores()
+        set(value) {
+            field = value
+            notifyPropertyChanged(BR.abilityScores)
         }
 }
