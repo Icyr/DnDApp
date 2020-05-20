@@ -14,11 +14,9 @@ import java.io.Serializable
     foreignKeys = [
         ForeignKey(entity = RaceEntity::class, parentColumns = ["id"], childColumns = ["race_id"]),
         ForeignKey(entity = BackgroundEntity::class, parentColumns = ["id"], childColumns = ["background_id"]),
-        ForeignKey(entity = CharacterClassEntity::class, parentColumns = ["id"], childColumns = ["character_class_id"]),
-        ForeignKey(entity = AbilityScoresEntity::class, parentColumns = ["id"], childColumns = ["ability_scores_id"])
-
+        ForeignKey(entity = CharacterClassEntity::class, parentColumns = ["id"], childColumns = ["character_class_id"])
 ],
-    indices = [Index("race_id"), Index("background_id"), Index("character_class_id"), Index("ability_scores_id")]
+    indices = [Index("race_id"), Index("background_id"), Index("character_class_id")]
 )
 data class CharacterEntity(
     val name: String,

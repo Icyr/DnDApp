@@ -1,7 +1,6 @@
 package com.dndapp.model.character
 
 import com.dndapp.model.Repository
-import com.dndapp.model.abilityscores.AbilityScoresRepository
 import com.dndapp.model.background.BackgroundRepository
 import com.dndapp.model.character.room.CharacterDao
 import com.dndapp.model.character.room.CharacterEntity
@@ -13,16 +12,14 @@ class CharacterRepository(
     private val characterDao: CharacterDao,
     raceRepository: RaceRepository,
     backgroundRepository: BackgroundRepository,
-    characterClassRepository: CharacterClassRepository,
-    abilityScoresRepository: AbilityScoresRepository
+    characterClassRepository: CharacterClassRepository
 ) : Repository<Character> {
 
     private val transformation: (input: JoinedCharacter) -> Character = {
         val race = raceRepository.transformation.invoke(it.race)
         val background = backgroundRepository.transformation.invoke(it.background)
         val characterClass = characterClassRepository.transformation.invoke(it.characterClass)
-        val abilityScores = abilityScoresRepository.transformation.invoke(it.abilityScores)
-        Character(it.character.name, race, background, characterClass, abilityScores, it.character.id)
+        Character(it.character.name, race, background, characterClass, it.character.abilityScores, it.character.id)
     }
 
     override fun loadAll(): List<Character> = characterDao.getCharacters().map(transformation)
