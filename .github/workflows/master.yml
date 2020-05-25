@@ -15,11 +15,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Setup Google Services
-        run: 'echo "$GOOGLE_SERVICES" > ./app/google-services.json'
-        shell: bash
-        env:
-          GOOGLE_SERVICES: ${{ secrets.GOOGLE_SERVICES }}
       - name: Build debug APK
         run: bash ./gradlew assembleDebug --stacktrace
 #      - name: Upload APK
